@@ -49,12 +49,17 @@
 }
 
 .tech-tag {
-  background: var(--accent-color);
-  color: var(--text-primary);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   padding: 0.3rem 0.8rem;
   border-radius: 15px;
   font-size: 0.8rem;
   font-weight: 500;
+}
+
+.tech-tag:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .project-links {

@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProjectCard.css';
 
-const ProjectCard = ({ title, description, techStack, liveDemo, github }) => {
+const ProjectCard = ({ title, description, techStack, github }) => {
   return (
     <div className="project-card">
       <h3>{title}</h3>
@@ -14,14 +14,6 @@ const ProjectCard = ({ title, description, techStack, liveDemo, github }) => {
         ))}
       </div>
       <div className="project-links">
-        <a 
-          href={liveDemo} 
-          className="project-link" 
-          target="_blank" 
-          rel="noopener noreferrer"
-        >
-          Live Demo →
-        </a>
         <a 
           href={github} 
           className="project-link" 
