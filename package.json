@@ -1,28 +1,64 @@
 {
-  "name": "personal-website",
-  "version": "0.1.0",
+  "name": "personal-portfolio-website",
+  "version": "1.0.0",
+  "description": "A modern, responsive personal portfolio website built with ReactJS showcasing full-stack development skills",
+  "author": "Kashyap Ramachandrula <kashyap.ramach@gmail.com>",
+  "license": "MIT",
   "private": true,
+  "homepage": "https://kashyapramachandrula.dev",
+  "keywords": [
+    "portfolio",
+    "react",
+    "personal-website",
+    "full-stack",
+    "developer"
+  ],
   "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.5.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "eslint": "^8.57.0",
+    "eslint-config-react-app": "^7.0.1",
+    "prettier": "^3.2.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.{js,jsx,json,css,md}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,json,css,md}\"",
+    "lint": "eslint src/**/*.{js,jsx}",
+    "lint:fix": "eslint src/**/*.{js,jsx} --fix",
+    "analyze": "npm run build && npx serve -s build",
+    "deploy": "npm run build && echo 'Ready for deployment!'",
+    "clean": "rm -rf build node_modules package-lock.json && npm install"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "no-console": "warn",
+      "no-unused-vars": "warn",
+      "react/prop-types": "off"
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 100,
+    "tabWidth": 2,
+    "useTabs": false
   },
   "browserslist": {
     "production": [
@@ -35,5 +71,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexthompson/personal-portfolio"
+  },
+  "bugs": {
+    "url": "https://github.com/alexthompson/personal-portfolio/issues"
   }
 }
