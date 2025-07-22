@@ -80,3 +80,25 @@
       gap: 1rem;
     }
   }
+
+.contact-popup {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e90ff;
+  color: #fff;
+  padding: 1rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(30, 144, 255, 0.2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 2000;
+  opacity: 0.97;
+  animation: fadeInPopup 0.3s;
+}
+
+@keyframes fadeInPopup {
+  from { opacity: 0; transform: translateX(-50%) scale(0.95); }
+  to { opacity: 0.97; transform: translateX(-50%) scale(1); }
+}
