@@ -72,8 +72,8 @@
 
 /* Scale up the profile image in hero section */
 .hero-image .animated-profile-image {
-  width: 300px;
-  height: 300px;
+  width: clamp(150px, 40vw, 500px);
+  height: clamp(150px, 40vw, 500px);
   box-shadow: 0 20px 60px rgba(0, 76, 255, 0.3);
 }
 
@@ -115,6 +115,11 @@
 
 /* Responsive Design */
 @media (max-width: 968px) {
+  .hero-image .animated-profile-image {
+    width: clamp(120px, 60vw, 350px);
+    height: clamp(120px, 60vw, 350px);
+  }
+
   .hero-container {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -132,23 +137,27 @@
   }
   
   .hero-image .animated-profile-image {
-    width: 250px;
-    height: 250px;
+    width: 500px;
+    height: 500px;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 2rem 1rem;
+    padding: 1rem 0.5rem;
   }
   
   .hero-container {
-    gap: 2rem;
+    gap: 1.2rem;
   }
   
   .hero-image .animated-profile-image {
-    width: 200px;
-    height: 200px;
+    width: clamp(100px, 80vw, 250px);
+    height: clamp(100px, 80vw, 250px);
+  }
+
+  .hero-content {
+    padding: 0;
   }
   
   .hero-image::before,

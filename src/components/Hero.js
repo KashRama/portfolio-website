@@ -1,6 +1,7 @@
+import profPic from './images/profPic.jpg'
+import childhoodPic from './images/childhoodPic.jpg'
 import React from 'react';
 import AnimatedProfileImage from './AnimatedProfileImage';
-import ProfPic from './images/ProfPic.jpg'; // Import the image
 import './Hero.css';
 
 const Hero = () => {
@@ -16,9 +17,14 @@ const Hero = () => {
       <div className="hero-container">
         <div className="hero-content">
           <h1>Hey, I'm Kashyap</h1>
-          <h2>Welcome to my website!</h2>
+          <h2>Welcome to my website! 
+            <br />
+            <span style={{ fontSize: '1.2rem'}}>
+              FYI, the image is interactive ;)
+            </span>
+          </h2>
           <p className="tagline">
-            Full Stack Developer | React | Node | Passionate About Clean Code
+            Software Engineer | Full Stack | AI | Chicago
           </p>
           <button className="cta-button" onClick={scrollToProjects}>
             Explore Projects
@@ -27,9 +33,13 @@ const Hero = () => {
         
         <div className="hero-image">
           <AnimatedProfileImage 
-            src={ProfPic} 
-            alt="Kashyap - Full Stack Developer"
+            src={profPic} 
+            backSrc={childhoodPic}
+            alt=""
             animationType="tilt"
+            showClickText={true}
+            backText="Me when I have to debug"
+            backTextPosition="bottom"
           />
         </div>
       </div>

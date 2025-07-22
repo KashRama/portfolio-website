@@ -12,6 +12,7 @@
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    pointer-events: auto;
   }
   
   .animated-profile-image img {
@@ -19,6 +20,182 @@
     height: 100%;
     object-fit: cover;
     transition: all 0.3s ease;
+  }
+  
+  /* FLIP FUNCTIONALITY */
+  .animated-profile-image--flippable {
+    perspective: 1000px;
+  }
+  
+  .image-flip-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+    pointer-events: none;
+  }
+  
+  .animated-profile-image--flipped .image-flip-container {
+    transform: rotateY(180deg);
+  }
+  
+  .image-side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 50%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  .image-back {
+    transform: rotateY(180deg);
+  }
+  
+  .image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* CLICK TEXT OVERLAY - SIMPLIFIED AND FIXED */
+  .click-text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 15;
+    pointer-events: none;
+  }
+  
+  .click-text {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    animation: pulse 2s ease-in-out infinite;
+    line-height: 1.3;
+    padding: 0 1rem;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { 
+      transform: scale(1); 
+      opacity: 1; 
+    }
+    50% { 
+      transform: scale(1.05); 
+      opacity: 0.8; 
+    }
+  }
+  
+  /* BOOMERANG STATUS */
+  .boomerang-status {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 76, 255, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 1001;
+    animation: bounce 0.6s ease-in-out infinite alternate;
+  }
+  
+  @keyframes bounce {
+    0% { transform: translateX(-50%) translateY(0px); }
+    100% { transform: translateX(-50%) translateY(-5px); }
+  }
+  
+  /* DRAGGING AND BOOMERANG STATES */
+  .animated-profile-image--dragging {
+    z-index: 1000;
+    box-shadow: 0 25px 50px rgba(0, 76, 255, 0.5) !important;
+    filter: brightness(1.1) saturate(1.2);
+    animation: none !important;
+  }
+  
+  .animated-profile-image--boomeranging {
+    box-shadow: 0 20px 40px rgba(0, 76, 255, 0.4) !important;
+    animation: none !important;
+  }
+  
+  /* CURSOR STATES */
+  .animated-profile-image {
+    cursor: grab;
+  }
+  
+  .animated-profile-image--dragging {
+    cursor: grabbing !important;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+  }
+  
+  /* BACK TEXT OVERLAY */
+  .back-text-overlay {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 5;
+    padding: 0.5rem;
+  }
+  
+  .back-text-bottom {
+    bottom: 0;
+    border-radius: 0 0 50% 50%;
+    height: 30%;
+  }
+  
+  .back-text-top {
+    top: 0;
+    border-radius: 50% 50% 0 0;
+    height: 30%;
+  }
+  
+  .back-text-center {
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 25px;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .back-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    animation: fadeInScale 0.5s ease-out 0.3s both;
+  }
+  
+  @keyframes fadeInScale {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
   
   .image-overlay {
@@ -122,6 +299,10 @@
     transition: transform 0.1s ease;
   }
   
+  .animated-profile-image--tilt--hovered:not(.animated-profile-image--flippable) {
+    transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(1.05);
+  }
+  
   .animated-profile-image--tilt::after {
     content: '';
     position: absolute;
@@ -133,6 +314,8 @@
     border-radius: 50%;
     opacity: 0;
     transition: opacity 0.3s ease;
+    z-index: 8;
+    pointer-events: none;
   }
   
   .animated-profile-image--tilt--hovered::after {
