@@ -12,9 +12,9 @@ const About = () => {
       <div className="container">
         <h2 className="section-title">About Me</h2>
         <p>
-            Hey! I'm Kashyap, a passionate software engineer from Chicago. I discovered 
-            programming during my computer science studies and fell in love with the 
-            problem-solving aspect and the ability to bring ideas to life through code.
+            Hey! I'm Kashyap, a driven software engineer born and brought up in the suburbs of Chicago. 
+            I discovered programming my senior year of high school and have dedicated the past couple
+            years to developing my skills.
         </p>
         <div className="about-content">
           <div className="about-text">
@@ -27,9 +27,7 @@ const About = () => {
             
             <h3>Career Goals</h3>
             <p>
-              I'm looking for opportunities to work on meaningful projects where I can 
-              contribute to a collaborative team environment. I believe in writing clean, 
-              maintainable code and continuous learning.
+              The future is AI. 
             </p>
             
             <h3>Beyond Code</h3>

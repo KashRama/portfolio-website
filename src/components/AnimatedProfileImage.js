@@ -16,6 +16,7 @@ const AnimatedProfileImage = ({
   const [isFlipped, setIsFlipped] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [isBoomeranging, setIsBoomeranging] = useState(false);
+  const [hasDropped, setHasDropped] = useState(false);
   
   const imageRef = useRef(null);
   const controls = useAnimation();
@@ -168,17 +169,31 @@ const AnimatedProfileImage = ({
         className={getAnimationClass()}
         style={{
           ...getImageStyle(),
-          cursor: isDragging ? "grabbing" : (enableBoomerang ? "grab" : "pointer")
+          cursor: isDragging ? "grabbing" : (enableBoomerang ? "grab" : "pointer"),
+          visibility: 'visible',
         }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={handleImageClick}
-        drag={enableBoomerang}
+        initial={hasDropped ? false : { y: '-100vh' }}
+        animate={hasDropped ? controls : {
+          y: 0,
+          transition: {
+            type: 'spring',
+            stiffness: 500,
+            damping: 20,
+            mass: 1,
+            velocity: 2,
+            bounce: 1,
+            duration: 2
+          }
+        }}
+        onAnimationComplete={() => setHasDropped(true)}
+        onMouseEnter={hasDropped ? () => setIsHovered(true) : undefined}
+        onMouseLeave={hasDropped ? () => setIsHovered(false) : undefined}
+        onClick={hasDropped ? handleImageClick : undefined}
+        drag={hasDropped && enableBoomerang}
         dragMomentum={false}
         dragElastic={0.2}
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        animate={controls}
+        onDragStart={hasDropped ? handleDragStart : undefined}
+        onDragEnd={hasDropped ? handleDragEnd : undefined}
         whileDrag={{ 
           scale: 1.1, 
           zIndex: 1000

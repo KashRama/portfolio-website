@@ -62,13 +62,13 @@ body {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 76, 255, 0.4);
   font-family: inherit;
 }
 
 .cta-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(100, 255, 218, 0.4);
+  box-shadow: 0 15px 40px rgba(0, 76, 255, 0.6);
 }
 
 section {

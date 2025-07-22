@@ -20,7 +20,7 @@ const Navigation = ({ theme, toggleTheme }) => {
   return (
     <nav>
       <div className="container">
-        <div className="logo">KR</div>
+        <div className="logo">Kash</div>
         <ul className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
           <li>
             <a href="#home" onClick={(e) => handleLinkClick(e, 'home')}>

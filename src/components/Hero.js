@@ -20,11 +20,11 @@ const Hero = () => {
           <h2>Welcome to my website! 
             <br />
             <span style={{ fontSize: '1.2rem'}}>
-              FYI, the image is interactive ;)
+              FYI, the image is interactive :)
             </span>
           </h2>
           <p className="tagline">
-            Software Engineer | Full Stack | AI | Chicago
+            Software Engineer | Full Stack Dev | AI | Chicago
           </p>
           <button className="cta-button" onClick={scrollToProjects}>
             Explore Projects
