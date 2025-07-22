@@ -11,14 +11,13 @@ const About = () => {
     <section id="about">
       <div className="container">
         <h2 className="section-title">About Me</h2>
+        <p>
+            Hey! I'm Kashyap, a passionate software engineer from Chicago. I discovered 
+            programming during my computer science studies and fell in love with the 
+            problem-solving aspect and the ability to bring ideas to life through code.
+        </p>
         <div className="about-content">
           <div className="about-text">
-            <p>
-              Hey! I'm Kashyap, a passionate full stack developer from Chicago. I discovered 
-              programming during my computer science studies and fell in love with the 
-              problem-solving aspect and the ability to bring ideas to life through code.
-            </p>
-            
             <h3>Dev Experience</h3>
             <p>
               I specialize in modern web technologies with a focus on React and Node.js. 

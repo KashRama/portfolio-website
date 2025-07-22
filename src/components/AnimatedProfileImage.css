@@ -1,0 +1,338 @@
+.profile-image-container {
+    position: relative;
+    display: inline-block;
+    margin: 2rem 0;
+  }
+  
+  .animated-profile-image {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  .animated-profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+  }
+  
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(76, 205, 196, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  /* 1. FLOATING ANIMATION */
+  .animated-profile-image--float {
+    animation: gentleFloat 6s ease-in-out infinite;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  @keyframes gentleFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .animated-profile-image--float:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(100, 255, 218, 0.3);
+  }
+  
+  /* 2. GLITCH EFFECT */
+  .animated-profile-image--glitch .glitch-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+  
+  .animated-profile-image--glitch .glitch-layer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .animated-profile-image--glitch .glitch-layer-1 {
+    background: rgba(255, 0, 0, 0.8);
+    mix-blend-mode: screen;
+  }
+  
+  .animated-profile-image--glitch .glitch-layer-2 {
+    background: rgba(0, 255, 0, 0.8);
+    mix-blend-mode: screen;
+  }
+  
+  .animated-profile-image--glitch--hovered .glitch-layer-1 {
+    opacity: 1;
+    animation: glitchShift1 0.5s infinite;
+  }
+  
+  .animated-profile-image--glitch--hovered .glitch-layer-2 {
+    opacity: 1;
+    animation: glitchShift2 0.5s infinite;
+  }
+  
+  @keyframes glitchShift1 {
+    0%, 100% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+  }
+  
+  @keyframes glitchShift2 {
+    0%, 100% { transform: translate(0, 0); }
+    20% { transform: translate(2px, -2px); }
+    40% { transform: translate(2px, 2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(-2px, 2px); }
+  }
+  
+  /* 3. GRAYSCALE TO COLOR */
+  .animated-profile-image--grayscale img {
+    filter: grayscale(100%) contrast(1.2);
+    transition: filter 0.5s ease;
+  }
+  
+  .animated-profile-image--grayscale--hovered img {
+    filter: grayscale(0%) contrast(1) saturate(1.2);
+  }
+  
+  .animated-profile-image--grayscale--hovered .image-overlay {
+    opacity: 1;
+  }
+  
+  /* 4. 3D TILT */
+  .animated-profile-image--tilt {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease;
+  }
+  
+  .animated-profile-image--tilt::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .animated-profile-image--tilt--hovered::after {
+    opacity: 1;
+  }
+  
+  /* 5. PARTICLE EFFECT */
+  .particles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .animated-profile-image--particles--hovered ~ .particles .particle {
+    opacity: 1;
+    animation: particleFloat 2s ease-in-out infinite;
+  }
+  
+  @keyframes particleFloat {
+    0%, 100% { 
+      transform: translate(0, 0) scale(0.5); 
+      opacity: 0; 
+    }
+    50% { 
+      transform: translate(var(--random-x, 0), var(--random-y, 0)) scale(1); 
+      opacity: 1; 
+    }
+  }
+  
+  /* Generate random positions for particles */
+  .particle-0 { --random-x: 20px; --random-y: -30px; animation-delay: 0s; }
+  .particle-1 { --random-x: -25px; --random-y: -20px; animation-delay: 0.1s; }
+  .particle-2 { --random-x: 30px; --random-y: 15px; animation-delay: 0.2s; }
+  .particle-3 { --random-x: -15px; --random-y: 25px; animation-delay: 0.3s; }
+  .particle-4 { --random-x: 0px; --random-y: -35px; animation-delay: 0.4s; }
+  .particle-5 { --random-x: 35px; --random-y: 0px; animation-delay: 0.5s; }
+  .particle-6 { --random-x: -30px; --random-y: 10px; animation-delay: 0.6s; }
+  .particle-7 { --random-x: 10px; --random-y: 30px; animation-delay: 0.7s; }
+  .particle-8 { --random-x: -20px; --random-y: -15px; animation-delay: 0.8s; }
+  .particle-9 { --random-x: 25px; --random-y: -25px; animation-delay: 0.9s; }
+  
+  /* 6. GEOMETRIC BACKGROUND */
+  .geometric-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 250px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .geo-shape {
+    position: absolute;
+    border: 2px solid var(--accent-color);
+    opacity: 0.3;
+    transition: all 0.5s ease;
+  }
+  
+  .geo-shape-1 {
+    width: 100px;
+    height: 100px;
+    top: 0;
+    right: 0;
+    transform: rotate(45deg);
+    animation: geoRotate1 10s linear infinite;
+  }
+  
+  .geo-shape-2 {
+    width: 80px;
+    height: 80px;
+    bottom: 20px;
+    left: 20px;
+    border-radius: 50%;
+    animation: geoFloat 8s ease-in-out infinite;
+  }
+  
+  .geo-shape-3 {
+    width: 60px;
+    height: 60px;
+    top: 30px;
+    left: 0;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    animation: geoRotate2 12s linear infinite;
+  }
+  
+  @keyframes geoRotate1 {
+    0%, 100% { transform: rotate(45deg); }
+    50% { transform: rotate(225deg); }
+  }
+  
+  @keyframes geoRotate2 {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+  }
+  
+  @keyframes geoFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+  }
+  
+  .animated-profile-image--geometric--hovered ~ .geometric-bg .geo-shape {
+    opacity: 0.8;
+    border-color: var(--accent-color);
+    filter: drop-shadow(0 0 10px var(--accent-color));
+  }
+  
+  /* 7. LIQUID MORPH */
+  .animated-profile-image--liquid {
+    clip-path: circle(50%);
+    transition: clip-path 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  .animated-profile-image--liquid--hovered {
+    clip-path: ellipse(60% 50%);
+  }
+  
+  /* 8. RIPPLE EFFECT */
+  .ripple-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  
+  .ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    opacity: 0;
+    animation: rippleExpand 1.5s ease-out;
+  }
+  
+  .ripple-2 {
+    animation-delay: 0.3s;
+  }
+  
+  .ripple-3 {
+    animation-delay: 0.6s;
+  }
+  
+  @keyframes rippleExpand {
+    0% {
+      width: 200px;
+      height: 200px;
+      opacity: 1;
+    }
+    100% {
+      width: 400px;
+      height: 400px;
+      opacity: 0;
+    }
+  }
+  
+  /* 9. BREATHING EFFECT */
+  .animated-profile-image--breathing {
+    animation: breathe 4s ease-in-out infinite;
+  }
+  
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  .animated-profile-image--breathing--hovered {
+    animation-play-state: paused;
+    transform: scale(1.1);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .animated-profile-image {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .particles,
+    .geometric-bg {
+      width: 200px;
+      height: 200px;
+    }
+  }

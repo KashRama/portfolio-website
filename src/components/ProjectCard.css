@@ -50,7 +50,7 @@
 
 .tech-tag {
   background: var(--accent-color);
-  color: var(--primary-bg);
+  color: var(--text-primary);
   padding: 0.3rem 0.8rem;
   border-radius: 15px;
   font-size: 0.8rem;
@@ -63,12 +63,12 @@
 }
 
 .project-link {
-  color: var(--accent-color);
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .project-link:hover {
-  color: var(--text-primary);
+  color: var(--accent-color);
 }

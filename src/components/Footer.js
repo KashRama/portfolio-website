@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="container">
-        <p>&copy; 2025 Kashyap Ramachandrula. Built with React, designed with passion.</p>
+        <p>&copy; 2025 Kashyap Ramachandrula</p>
       </div>
     </footer>
   );
