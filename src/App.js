@@ -25,7 +25,7 @@ const App = () => {
     <div className="App">
       <Navigation theme={theme} toggleTheme={toggleTheme} />
       <Hero />
-      <About />
+      <About theme={theme} />
       <Projects />
       <Music />
       <Contact />

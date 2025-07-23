@@ -1,10 +1,20 @@
 import React from 'react';
 import './About.css';
 
-const About = () => {
-  const skills = [
-    'Javascript', 'Python', 'Java', 'React', 'Express', 'OCP', 
-    'AWS', 'PostgreSQL', 'HTML/CSS', 'Git', 'REST APIs', 'Docker'
+const About = ({ theme }) => {
+  const skillData = [
+    { name: 'Javascript', color: '#f7df1e' },
+    { name: 'Python', color: '#3776AB' },
+    { name: 'Java', color: '#007396' },
+    { name: 'React', color: '#61dafb' },
+    { name: 'Express', color: '#cccccc' },
+    { name: 'OCP', color: '#EE0000' },
+    { name: 'AWS', color: '#FF9900' },
+    { name: 'PostgreSQL', color: '#336791' },
+    { name: 'HTML/CSS', color: '#e34c26' },
+    { name: 'Git', color: '#f34f29' },
+    { name: 'REST APIs', color: '#6db33f' },
+    { name: 'Docker', color: '#2496ed' },
   ];
 
   return (
@@ -48,11 +58,26 @@ const About = () => {
           <div className="skills-section">
             <h3>Technical Skills</h3>
             <div className="skills-grid">
-              {skills.map((skill, index) => (
-                <div key={index} className="skill-tag">
-                  {skill}
-                </div>
-              ))}
+              {skillData.map((skill, index) => {
+                const textColor = theme === 'dark' ? skill.color : '';
+                const backgroundColor = theme ==='dark' ? skill.color + '22' : '';
+                const borderColor = theme === 'dark' ? skill.color : '';
+                const hoverColor = skill.color;
+                return (
+                  <div
+                    key={index}
+                    className={`skill-tag${theme === 'dark' ? ' dark-skill-tag' : ''}`}
+                    style={{
+                      background: backgroundColor,
+                      borderColor: borderColor,
+                      color: textColor,
+                      '--dynamic-skill-hover': hoverColor
+                    }}
+                  >
+                    {skill.name}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -87,16 +87,16 @@ const AnimatedProfileImage = ({
     
     // Bounce 2: opposite direction (fast, ease-out)
     await controls.start({
-      x: -normalizedVelX * moveDistance,
-      y: -normalizedVelY * moveDistance,
+      x: -normalizedVelX * moveDistance * 0.95,
+      y: -normalizedVelY * moveDistance * 0.95,
       rotate: 270,
       transition: { duration: 0.35, ease: "easeOut" }
     });
     
-    // Bounce 3: throw direction, half distance
+    // Bounce 3: throw direction, 0.75 distance
     await controls.start({
-      x: normalizedVelX * moveDistance * 0.5,
-      y: normalizedVelY * moveDistance * 0.5,
+      x: normalizedVelX * moveDistance * 0.75,
+      y: normalizedVelY * moveDistance * 0.75,
       rotate: 180,
       transition: { duration: 0.5, ease: "easeIn" }
     });

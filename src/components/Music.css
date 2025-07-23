@@ -10,7 +10,7 @@
   
   .spotify-embed {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     max-width: 1200px;
     margin: 2rem auto;
