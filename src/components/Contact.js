@@ -43,7 +43,7 @@ const Contact = () => {
 
   const downloadResume = () => {
     // In a real app, this would download an actual PDF file
-    alert('Resume download would start here!');
+    alert('Resume upload coming soon!');
   };
 
   return (
