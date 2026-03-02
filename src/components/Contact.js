@@ -42,8 +42,16 @@ const Contact = () => {
   };
 
   const downloadResume = () => {
-    // In a real app, this would download an actual PDF file
-    alert('Resume upload coming soon!');
+    const fileUrl = '/KashRamaResume.pdf'; 
+  
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    
+    link.setAttribute('download', 'KashRamaResume.pdf');
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
