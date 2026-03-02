@@ -5,6 +5,12 @@ import './Projects.css';
 const Projects = () => {
   const projectsData = [
     {
+      title: "AI Therapy Chatbot",
+      description: "Full-stack AI chatbot utilizing retrieval-augmented generation (RAG) to provide mental health support to users. Chats and messages are stored on Supabase and processed by OpenAI's API to provide a seamless experience.",
+      techStack: ["Next", "Tailwind", "Supabase", 'OpenAI API'],
+      github: "https://github.com/KashRama/AI-Therapist"
+    },
+    {
       title: "Rotating Bookshelf - Tool Organizer",
       description: "Smart rotating bookshelf paired with a custom app that streamlines storage and retrieval of small tools. Users can insert and retrieve items through a clean UI, which communicates with an ESP32 to rotate the shelf to the correct position.",
       techStack: ["React", "Arduino", "ESP32", 'WebSockets'],
